@@ -1,0 +1,39 @@
+#include <stdio.h>
+
+char* maximumTime(char* time) {
+    if(time[3] == '?'){
+        time[3] = '5';
+    }
+    if (time[4] == '?'){
+        time[4] = '9';
+    }
+    if((time[0] == '?') && (time[1] == '?')){
+        time[0] = '2';
+        time[1] = '3';
+    }
+    if (time[0] == '?') {
+        if (time[1] != '?' && (time[1] == '0' || time[1] == '1' || time[1] == '2' || time[1] == '3')) {
+            time[0] = '2';
+        } else {
+            time[0] = '1';
+        }
+    }
+    if (time[1] == '?') {
+        if (time[0] == '2') {
+            time[1] = '3';
+        } else {
+            time[1] = '9';
+        }
+    }
+    
+    return(time);
+}
+
+
+int main() {
+    char time[6];
+    printf("Enter the time (e.g., 1?:3?): ");
+    scanf("%5s", time);
+    printf("Maximum time: %s\n", maximumTime(time));
+    return 0;
+}
